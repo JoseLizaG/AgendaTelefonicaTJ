@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cc2254110ec4471c80752d053dbd978c" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_9EB27B_TJModel.Casa" Width="1.5" PointX="5.125" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_9EB27B_TJModel.Congragacion" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_9EB27B_TJModel.Territorio" Width="1.5" PointX="2.875" PointY="0.5" />
+        <AssociationConnector Association="DB_9EB27B_TJModel.FK_Casa_Territorio" />
+        <AssociationConnector Association="DB_9EB27B_TJModel.FK_Territorio_Congragacion" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

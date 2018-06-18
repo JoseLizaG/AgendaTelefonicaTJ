@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_9EB27B_TJModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DB_9EB27B_TJEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Casas" EntityType="DB_9EB27B_TJModel.Casa" />
+    <EntitySet Name="Congragacions" EntityType="DB_9EB27B_TJModel.Congragacion" />
+    <EntitySet Name="Territorios" EntityType="DB_9EB27B_TJModel.Territorio" />
+    <AssociationSet Name="FK_Casa_Territorio" Association="DB_9EB27B_TJModel.FK_Casa_Territorio">
+      <End Role="Territorio" EntitySet="Territorios" />
+      <End Role="Casa" EntitySet="Casas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territorio_Congragacion" Association="DB_9EB27B_TJModel.FK_Territorio_Congragacion">
+      <End Role="Congragacion" EntitySet="Congragacions" />
+      <End Role="Territorio" EntitySet="Territorios" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Casa">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TerritorioId" Type="Int32" Nullable="false" />
+    <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Calle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Numero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DepInt" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Abonado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Distrito" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Territorio" Relationship="DB_9EB27B_TJModel.FK_Casa_Territorio" FromRole="Casa" ToRole="Territorio" />
+  </EntityType>
+  <EntityType Name="Congragacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Circuito" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Territorios" Relationship="DB_9EB27B_TJModel.FK_Territorio_Congragacion" FromRole="Congragacion" ToRole="Territorio" />
+  </EntityType>
+  <EntityType Name="Territorio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CongregacionId" Type="Int32" />
+    <Property Name="Territorio1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mapa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CoordenadaX" Type="Decimal" Precision="18" Scale="10" />
+    <Property Name="CoordenadaY" Type="Decimal" Precision="18" Scale="10" />
+    <NavigationProperty Name="Casas" Relationship="DB_9EB27B_TJModel.FK_Casa_Territorio" FromRole="Territorio" ToRole="Casa" />
+    <NavigationProperty Name="Congragacion" Relationship="DB_9EB27B_TJModel.FK_Territorio_Congragacion" FromRole="Territorio" ToRole="Congragacion" />
+  </EntityType>
+  <Association Name="FK_Casa_Territorio">
+    <End Type="DB_9EB27B_TJModel.Territorio" Role="Territorio" Multiplicity="1" />
+    <End Type="DB_9EB27B_TJModel.Casa" Role="Casa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Territorio">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Casa">
+        <PropertyRef Name="TerritorioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territorio_Congragacion">
+    <End Type="DB_9EB27B_TJModel.Congragacion" Role="Congragacion" Multiplicity="0..1" />
+    <End Type="DB_9EB27B_TJModel.Territorio" Role="Territorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Congragacion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Territorio">
+        <PropertyRef Name="CongregacionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

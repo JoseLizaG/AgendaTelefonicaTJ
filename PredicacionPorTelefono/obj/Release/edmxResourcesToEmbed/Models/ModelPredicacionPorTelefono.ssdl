@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_9EB27B_TJModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Casa">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TerritorioId" Type="int" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="20" />
+    <Property Name="Calle" Type="varchar" MaxLength="50" />
+    <Property Name="Numero" Type="varchar" MaxLength="10" />
+    <Property Name="DepInt" Type="varchar" MaxLength="10" />
+    <Property Name="Telefono1" Type="varchar" MaxLength="15" />
+    <Property Name="Telefono2" Type="varchar" MaxLength="15" />
+    <Property Name="Telefono3" Type="varchar" MaxLength="15" />
+    <Property Name="Abonado" Type="varchar" MaxLength="100" />
+    <Property Name="Distrito" Type="varchar" MaxLength="50" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="Congragacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="250" />
+    <Property Name="Direccion" Type="varchar" MaxLength="50" />
+    <Property Name="Circuito" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Territorio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CongregacionId" Type="int" />
+    <Property Name="Territorio" Type="varchar" MaxLength="50" />
+    <Property Name="Mapa" Type="varchar" MaxLength="50" />
+    <Property Name="CoordenadaX" Type="decimal" Precision="18" Scale="10" />
+    <Property Name="CoordenadaY" Type="decimal" Precision="18" Scale="10" />
+  </EntityType>
+  <Association Name="FK_Casa_Territorio">
+    <End Role="Territorio" Type="Self.Territorio" Multiplicity="1" />
+    <End Role="Casa" Type="Self.Casa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Territorio">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Casa">
+        <PropertyRef Name="TerritorioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territorio_Congragacion">
+    <End Role="Congragacion" Type="Self.Congragacion" Multiplicity="0..1" />
+    <End Role="Territorio" Type="Self.Territorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Congragacion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Territorio">
+        <PropertyRef Name="CongregacionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_9EB27B_TJModelStoreContainer">
+    <EntitySet Name="Casa" EntityType="Self.Casa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Congragacion" EntityType="Self.Congragacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Territorio" EntityType="Self.Territorio" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Casa_Territorio" Association="Self.FK_Casa_Territorio">
+      <End Role="Territorio" EntitySet="Territorio" />
+      <End Role="Casa" EntitySet="Casa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territorio_Congragacion" Association="Self.FK_Territorio_Congragacion">
+      <End Role="Congragacion" EntitySet="Congragacion" />
+      <End Role="Territorio" EntitySet="Territorio" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

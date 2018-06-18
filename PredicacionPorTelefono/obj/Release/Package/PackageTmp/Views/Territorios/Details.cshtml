@@ -1,0 +1,58 @@
+﻿@model PredicacionPorTelefono.Models.Territorio
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Territorio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Territorio1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Territorio1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mapa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mapa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CoordenadaX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoordenadaX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CoordenadaY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoordenadaY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Congragacion.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Congragacion.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

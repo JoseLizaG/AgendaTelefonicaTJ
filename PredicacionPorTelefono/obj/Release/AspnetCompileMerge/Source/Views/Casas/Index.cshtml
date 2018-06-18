@@ -1,0 +1,85 @@
+﻿@model IEnumerable<PredicacionPorTelefono.Models.Casa>
+
+@{
+    ViewBag.Title = "Casas";
+}
+
+@Html.ActionLink("Nuevo", "Create", new { id = 1 }, new { @class = "btn btn-success ad-click-event" })
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Calle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.DepInt)*@
+            Interior
+        </th>
+        <th>
+            Telefono
+            @*@Html.DisplayNameFor(model => model.Telefono1)*@
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Abonado)*@
+            Amo de Casa
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Distrito)
+            </th>*@
+        @*<th>
+                @Html.DisplayNameFor(model => model.Observaciones)
+            </th>*@
+        @*<th>
+            
+            Territorio
+        </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepInt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono1)
+                @*@Html.DisplayFor(modelItem => item.Telefono2)
+                @Html.DisplayFor(modelItem => item.Telefono3)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Abonado)
+
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Distrito)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Observaciones)
+                </td>*@
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Territorio.Territorio1)
+            </td>*@
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                @Html.ActionLink("Borrar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>

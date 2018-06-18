@@ -1,0 +1,106 @@
+﻿@model PredicacionPorTelefono.Models.Casa
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Casa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DepInt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepInt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Abonado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Abonado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Distrito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Distrito)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Territorio.Territorio1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Territorio.Territorio1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_9EB27B_TJModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Casa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerritorioId" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="20" />
+          <Property Name="Calle" Type="varchar" MaxLength="50" />
+          <Property Name="Numero" Type="varchar" MaxLength="10" />
+          <Property Name="DepInt" Type="varchar" MaxLength="10" />
+          <Property Name="Telefono1" Type="varchar" MaxLength="15" />
+          <Property Name="Telefono2" Type="varchar" MaxLength="15" />
+          <Property Name="Telefono3" Type="varchar" MaxLength="15" />
+          <Property Name="Abonado" Type="varchar" MaxLength="100" />
+          <Property Name="Distrito" Type="varchar" MaxLength="50" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Congragacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="250" />
+          <Property Name="Direccion" Type="varchar" MaxLength="50" />
+          <Property Name="Circuito" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Territorio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CongregacionId" Type="int" />
+          <Property Name="Territorio" Type="varchar" MaxLength="50" />
+          <Property Name="Mapa" Type="varchar" MaxLength="50" />
+          <Property Name="CoordenadaX" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="CoordenadaY" Type="decimal" Precision="18" Scale="10" />
+        </EntityType>
+        <Association Name="FK_Casa_Territorio">
+          <End Role="Territorio" Type="Self.Territorio" Multiplicity="1" />
+          <End Role="Casa" Type="Self.Casa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Territorio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Casa">
+              <PropertyRef Name="TerritorioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Territorio_Congragacion">
+          <End Role="Congragacion" Type="Self.Congragacion" Multiplicity="0..1" />
+          <End Role="Territorio" Type="Self.Territorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Congragacion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Territorio">
+              <PropertyRef Name="CongregacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_9EB27B_TJModelStoreContainer">
+          <EntitySet Name="Casa" EntityType="Self.Casa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Congragacion" EntityType="Self.Congragacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Territorio" EntityType="Self.Territorio" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Casa_Territorio" Association="Self.FK_Casa_Territorio">
+            <End Role="Territorio" EntitySet="Territorio" />
+            <End Role="Casa" EntitySet="Casa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Territorio_Congragacion" Association="Self.FK_Territorio_Congragacion">
+            <End Role="Congragacion" EntitySet="Congragacion" />
+            <End Role="Territorio" EntitySet="Territorio" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_9EB27B_TJModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DB_9EB27B_TJEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Casas" EntityType="DB_9EB27B_TJModel.Casa" />
+          <EntitySet Name="Congragacions" EntityType="DB_9EB27B_TJModel.Congragacion" />
+          <EntitySet Name="Territorios" EntityType="DB_9EB27B_TJModel.Territorio" />
+          <AssociationSet Name="FK_Casa_Territorio" Association="DB_9EB27B_TJModel.FK_Casa_Territorio">
+            <End Role="Territorio" EntitySet="Territorios" />
+            <End Role="Casa" EntitySet="Casas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Territorio_Congragacion" Association="DB_9EB27B_TJModel.FK_Territorio_Congragacion">
+            <End Role="Congragacion" EntitySet="Congragacions" />
+            <End Role="Territorio" EntitySet="Territorios" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Casa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerritorioId" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Calle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Numero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DepInt" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Abonado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Distrito" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Territorio" Relationship="DB_9EB27B_TJModel.FK_Casa_Territorio" FromRole="Casa" ToRole="Territorio" />
+        </EntityType>
+        <EntityType Name="Congragacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Circuito" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Territorios" Relationship="DB_9EB27B_TJModel.FK_Territorio_Congragacion" FromRole="Congragacion" ToRole="Territorio" />
+        </EntityType>
+        <EntityType Name="Territorio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CongregacionId" Type="Int32" />
+          <Property Name="Territorio1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mapa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CoordenadaX" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="CoordenadaY" Type="Decimal" Precision="18" Scale="10" />
+          <NavigationProperty Name="Casas" Relationship="DB_9EB27B_TJModel.FK_Casa_Territorio" FromRole="Territorio" ToRole="Casa" />
+          <NavigationProperty Name="Congragacion" Relationship="DB_9EB27B_TJModel.FK_Territorio_Congragacion" FromRole="Territorio" ToRole="Congragacion" />
+        </EntityType>
+        <Association Name="FK_Casa_Territorio">
+          <End Type="DB_9EB27B_TJModel.Territorio" Role="Territorio" Multiplicity="1" />
+          <End Type="DB_9EB27B_TJModel.Casa" Role="Casa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Territorio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Casa">
+              <PropertyRef Name="TerritorioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Territorio_Congragacion">
+          <End Type="DB_9EB27B_TJModel.Congragacion" Role="Congragacion" Multiplicity="0..1" />
+          <End Type="DB_9EB27B_TJModel.Territorio" Role="Territorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Congragacion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Territorio">
+              <PropertyRef Name="CongregacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_9EB27B_TJModelStoreContainer" CdmEntityContainer="DB_9EB27B_TJEntities">
+          <EntitySetMapping Name="Casas">
+            <EntityTypeMapping TypeName="DB_9EB27B_TJModel.Casa">
+              <MappingFragment StoreEntitySet="Casa">
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Abonado" ColumnName="Abonado" />
+                <ScalarProperty Name="Telefono3" ColumnName="Telefono3" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+                <ScalarProperty Name="DepInt" ColumnName="DepInt" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="TerritorioId" ColumnName="TerritorioId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Congragacions">
+            <EntityTypeMapping TypeName="DB_9EB27B_TJModel.Congragacion">
+              <MappingFragment StoreEntitySet="Congragacion">
+                <ScalarProperty Name="Circuito" ColumnName="Circuito" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Territorios">
+            <EntityTypeMapping TypeName="DB_9EB27B_TJModel.Territorio">
+              <MappingFragment StoreEntitySet="Territorio">
+                <ScalarProperty Name="CoordenadaY" ColumnName="CoordenadaY" />
+                <ScalarProperty Name="CoordenadaX" ColumnName="CoordenadaX" />
+                <ScalarProperty Name="Mapa" ColumnName="Mapa" />
+                <ScalarProperty Name="Territorio1" ColumnName="Territorio" />
+                <ScalarProperty Name="CongregacionId" ColumnName="CongregacionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

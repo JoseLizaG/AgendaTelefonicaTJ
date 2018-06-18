@@ -1,0 +1,55 @@
+﻿@model IEnumerable<PredicacionPorTelefono.Models.Congragacion>
+
+@{
+    ViewBag.Title = "Congregaciones";
+}
+
+@Html.ActionLink("Nuevo", "Create", new { id = 1 }, new { @class = "btn btn-success ad-click-event" })
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Circuito)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Usuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Circuito)
+            </td>
+            <td>
+                <a href="@Url.Action("Details", "Territorios", new { id = item.Id})" , class="btn btn-info btn-sm"><span>Territorios</span></a>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                @Html.ActionLink("Borrar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>

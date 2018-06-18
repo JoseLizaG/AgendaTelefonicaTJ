@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PredicacionPorTelefono.Models.Territorio>
+
+@{
+    ViewBag.Title = "Territorios";
+}
+
+@Html.ActionLink("Nuevo", "Create", new { id = 1 }, new { @class = "btn btn-success ad-click-event" })
+
+
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Territorio1)*@
+            Congregación
+
+        </th>
+        <th>
+                @Html.DisplayNameFor(model => model.Mapa)
+            </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.CoordenadaX)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoordenadaY)
+            </th>*@
+        <th>
+            @*@Html.DisplayNameFor(model => model.Congragacion.Nombre)*@
+            Territorio
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Congragacion.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Territorio1)
+            </td>
+            <td>
+                <a href="@item.Mapa" class="link-black"><span>Ver Mapa</span></a>
+            </td>
+            @*    <td>
+                    @Html.DisplayFor(modelItem => item.CoordenadaX)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CoordenadaY)
+                </td>*@
+
+            <td>
+                <a href="@Url.Action("Details", "Casas", new { id = item.Id})" , class="btn btn-info btn-sm"><span>Listar Casas</span></a>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                @Html.ActionLink("Borrar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>
