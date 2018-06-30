@@ -33,6 +33,13 @@
           <Property Name="Direccion" Type="varchar" MaxLength="50" />
           <Property Name="Circuito" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Territorio">
           <Key>
             <PropertyRef Name="Id" />
@@ -40,9 +47,22 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CongregacionId" Type="int" />
           <Property Name="Territorio" Type="varchar" MaxLength="50" />
-          <Property Name="Mapa" Type="varchar" MaxLength="50" />
+          <Property Name="Mapa" Type="varchar" MaxLength="500" />
           <Property Name="CoordenadaX" Type="decimal" Precision="18" Scale="10" />
           <Property Name="CoordenadaY" Type="decimal" Precision="18" Scale="10" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="250" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="RolId" Type="int" />
         </EntityType>
         <Association Name="FK_Casa_Territorio">
           <End Role="Territorio" Type="Self.Territorio" Multiplicity="1" />
@@ -68,10 +88,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Usuario_Rol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DB_9EB27B_TJModelStoreContainer">
           <EntitySet Name="Casa" EntityType="Self.Casa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Congragacion" EntityType="Self.Congragacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Territorio" EntityType="Self.Territorio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Casa_Territorio" Association="Self.FK_Casa_Territorio">
             <End Role="Territorio" EntitySet="Territorio" />
             <End Role="Casa" EntitySet="Casa" />
@@ -79,6 +113,10 @@
           <AssociationSet Name="FK_Territorio_Congragacion" Association="Self.FK_Territorio_Congragacion">
             <End Role="Congragacion" EntitySet="Congragacion" />
             <End Role="Territorio" EntitySet="Territorio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -96,6 +134,12 @@
           <AssociationSet Name="FK_Territorio_Congragacion" Association="DB_9EB27B_TJModel.FK_Territorio_Congragacion">
             <End Role="Congragacion" EntitySet="Congragacions" />
             <End Role="Territorio" EntitySet="Territorios" />
+          </AssociationSet>
+          <EntitySet Name="Rols" EntityType="DB_9EB27B_TJModel.Rol" />
+          <EntitySet Name="Usuarios" EntityType="DB_9EB27B_TJModel.Usuario" />
+          <AssociationSet Name="FK_Usuario_Rol" Association="DB_9EB27B_TJModel.FK_Usuario_Rol">
+            <End Role="Rol" EntitySet="Rols" />
+            <End Role="Usuario" EntitySet="Usuarios" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Casa">
@@ -135,7 +179,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CongregacionId" Type="Int32" />
           <Property Name="Territorio1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Mapa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mapa" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="CoordenadaX" Type="Decimal" Precision="18" Scale="10" />
           <Property Name="CoordenadaY" Type="Decimal" Precision="18" Scale="10" />
           <NavigationProperty Name="Casas" Relationship="DB_9EB27B_TJModel.FK_Casa_Territorio" FromRole="Territorio" ToRole="Casa" />
@@ -162,6 +206,40 @@
             </Principal>
             <Dependent Role="Territorio">
               <PropertyRef Name="CongregacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuarios" Relationship="DB_9EB27B_TJModel.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="RolId" Type="Int32" />
+          <NavigationProperty Name="Rol" Relationship="DB_9EB27B_TJModel.FK_Usuario_Rol" FromRole="Usuario" ToRole="Rol" />
+        </EntityType>
+        <Association Name="FK_Usuario_Rol">
+          <End Type="DB_9EB27B_TJModel.Rol" Role="Rol" Multiplicity="0..1" />
+          <End Type="DB_9EB27B_TJModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="RolId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -209,6 +287,28 @@
                 <ScalarProperty Name="Mapa" ColumnName="Mapa" />
                 <ScalarProperty Name="Territorio1" ColumnName="Territorio" />
                 <ScalarProperty Name="CongregacionId" ColumnName="CongregacionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rols">
+            <EntityTypeMapping TypeName="DB_9EB27B_TJModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="DB_9EB27B_TJModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

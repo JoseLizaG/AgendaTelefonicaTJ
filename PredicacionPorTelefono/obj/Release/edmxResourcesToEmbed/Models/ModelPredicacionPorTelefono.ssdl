@@ -28,6 +28,13 @@
     <Property Name="Direccion" Type="varchar" MaxLength="50" />
     <Property Name="Circuito" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="Territorio">
     <Key>
       <PropertyRef Name="Id" />
@@ -35,9 +42,22 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CongregacionId" Type="int" />
     <Property Name="Territorio" Type="varchar" MaxLength="50" />
-    <Property Name="Mapa" Type="varchar" MaxLength="50" />
+    <Property Name="Mapa" Type="varchar" MaxLength="500" />
     <Property Name="CoordenadaX" Type="decimal" Precision="18" Scale="10" />
     <Property Name="CoordenadaY" Type="decimal" Precision="18" Scale="10" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Apellido" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="250" />
+    <Property Name="Estado" Type="bit" />
+    <Property Name="RolId" Type="int" />
   </EntityType>
   <Association Name="FK_Casa_Territorio">
     <End Role="Territorio" Type="Self.Territorio" Multiplicity="1" />
@@ -63,10 +83,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Usuario_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="DB_9EB27B_TJModelStoreContainer">
     <EntitySet Name="Casa" EntityType="Self.Casa" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Congragacion" EntityType="Self.Congragacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Territorio" EntityType="Self.Territorio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Casa_Territorio" Association="Self.FK_Casa_Territorio">
       <End Role="Territorio" EntitySet="Territorio" />
       <End Role="Casa" EntitySet="Casa" />
@@ -74,6 +108,10 @@
     <AssociationSet Name="FK_Territorio_Congragacion" Association="Self.FK_Territorio_Congragacion">
       <End Role="Congragacion" EntitySet="Congragacion" />
       <End Role="Territorio" EntitySet="Territorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

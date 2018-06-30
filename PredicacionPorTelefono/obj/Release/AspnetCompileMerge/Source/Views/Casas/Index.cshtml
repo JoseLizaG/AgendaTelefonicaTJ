@@ -8,9 +8,9 @@
 
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Tipo)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Calle)
         </th>
@@ -25,10 +25,10 @@
             Telefono
             @*@Html.DisplayNameFor(model => model.Telefono1)*@
         </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.Abonado)*@
-            Amo de Casa
-        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Abonado)
+                    Amo de Casa
+                </th>*@
         @*<th>
                 @Html.DisplayNameFor(model => model.Distrito)
             </th>*@
@@ -36,18 +36,18 @@
                 @Html.DisplayNameFor(model => model.Observaciones)
             </th>*@
         @*<th>
-            
-            Territorio
-        </th>*@
+
+                Territorio
+            </th>*@
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Tipo)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Calle)
             </td>
@@ -58,14 +58,15 @@
                 @Html.DisplayFor(modelItem => item.DepInt)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Telefono1)
-                @*@Html.DisplayFor(modelItem => item.Telefono2)
-                @Html.DisplayFor(modelItem => item.Telefono3)*@
+                <a href="tel:+ @item.Telefono1)">@item.Telefono1 </a>
+                @*@Html.DisplayFor(modelItem=>
+                    item.Telefono2)
+                    @Html.DisplayFor(modelItem => item.Telefono3)*@
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Abonado)
 
-            </td>
+            </td>*@
             @*<td>
                     @Html.DisplayFor(modelItem => item.Distrito)
                 </td>*@
@@ -73,11 +74,11 @@
                     @Html.DisplayFor(modelItem => item.Observaciones)
                 </td>*@
             @*<td>
-                @Html.DisplayFor(modelItem => item.Territorio.Territorio1)
-            </td>*@
+                    @Html.DisplayFor(modelItem => item.Territorio.Territorio1)
+                </td>*@
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
-                @Html.ActionLink("Borrar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                @Html.ActionLink("Agregar Nota", "Notas", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                @*@Html.ActionLink("Borrar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })*@
             </td>
         </tr>
     }

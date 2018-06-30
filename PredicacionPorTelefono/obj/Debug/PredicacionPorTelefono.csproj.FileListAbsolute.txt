@@ -96,3 +96,12 @@ D:\Cursos\Bootstrap\PredicacionPorTelefono\PredicacionPorTelefono\bin\EntityFram
 D:\Cursos\Bootstrap\PredicacionPorTelefono\PredicacionPorTelefono\bin\EntityFramework.xml
 D:\Cursos\Bootstrap\PredicacionPorTelefono\PredicacionPorTelefono\bin\EntityFramework.SqlServer.xml
 D:\Cursos\Bootstrap\PredicacionPorTelefono\PredicacionPorTelefono\obj\Debug\PredicacionPorTelefono.csprojResolveAssemblyReference.cache
+D:\Cursos\Bootstrap\PredicacionPorTelefono\PredicacionPorTelefono\bin\es\EntityFramework.resources.dll
+D:\Cursos\Bootstrap\PredicacionPorTelefono\PredicacionPorTelefono\bin\es\EntityFramework.SqlServer.resources.dll
+D:\Cursos\Bootstrap\PredicacionPorTelefono\PredicacionPorTelefono\bin\es\System.Web.Helpers.resources.dll
+D:\Cursos\Bootstrap\PredicacionPorTelefono\PredicacionPorTelefono\bin\es\System.Web.Razor.resources.dll
+D:\Cursos\Bootstrap\PredicacionPorTelefono\PredicacionPorTelefono\bin\es\System.Web.Webpages.resources.dll
+D:\Cursos\Bootstrap\PredicacionPorTelefono\PredicacionPorTelefono\bin\es\System.Web.Webpages.Deployment.resources.dll
+D:\Cursos\Bootstrap\PredicacionPorTelefono\PredicacionPorTelefono\bin\es\System.Web.Webpages.Razor.resources.dll
+D:\Cursos\Bootstrap\PredicacionPorTelefono\PredicacionPorTelefono\bin\es\System.Web.Mvc.resources.dll
+D:\Cursos\Bootstrap\PredicacionPorTelefono\PredicacionPorTelefono\bin\es\System.Web.Optimization.resources.dll

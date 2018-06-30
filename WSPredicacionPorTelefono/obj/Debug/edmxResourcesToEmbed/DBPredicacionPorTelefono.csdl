@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_9EB27B_TJModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Casa">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TerritorioId" Type="Int32" Nullable="false" />
+    <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Calle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Numero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DepInt" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Abonado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Distrito" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Territorio" Relationship="Self.FK_Casa_Territorio" FromRole="Casa" ToRole="Territorio" />
+  </EntityType>
+  <EntityType Name="Congragacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Circuito" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Territorios" Relationship="Self.FK_Territorio_Congragacion" FromRole="Congragacion" ToRole="Territorio" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Territorio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CongregacionId" Type="Int32" />
+    <Property Name="Territorio1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mapa" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CoordenadaX" Type="Decimal" Precision="18" Scale="10" />
+    <Property Name="CoordenadaY" Type="Decimal" Precision="18" Scale="10" />
+    <NavigationProperty Name="Casas" Relationship="Self.FK_Casa_Territorio" FromRole="Territorio" ToRole="Casa" />
+    <NavigationProperty Name="Congragacion" Relationship="Self.FK_Territorio_Congragacion" FromRole="Territorio" ToRole="Congragacion" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="RolId" Type="Int32" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK_Usuario_Rol" FromRole="Usuario" ToRole="Rol" />
+  </EntityType>
+  <Association Name="FK_Casa_Territorio">
+    <End Role="Territorio" Type="Self.Territorio" Multiplicity="1" />
+    <End Role="Casa" Type="Self.Casa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Territorio">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Casa">
+        <PropertyRef Name="TerritorioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Territorio_Congragacion">
+    <End Role="Congragacion" Type="Self.Congragacion" Multiplicity="0..1" />
+    <End Role="Territorio" Type="Self.Territorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Congragacion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Territorio">
+        <PropertyRef Name="CongregacionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_9EB27B_TJEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Casas" EntityType="Self.Casa" />
+    <EntitySet Name="Congragacions" EntityType="Self.Congragacion" />
+    <EntitySet Name="Rols" EntityType="Self.Rol" />
+    <EntitySet Name="Territorios" EntityType="Self.Territorio" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK_Casa_Territorio" Association="Self.FK_Casa_Territorio">
+      <End Role="Territorio" EntitySet="Territorios" />
+      <End Role="Casa" EntitySet="Casas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Territorio_Congragacion" Association="Self.FK_Territorio_Congragacion">
+      <End Role="Congragacion" EntitySet="Congragacions" />
+      <End Role="Territorio" EntitySet="Territorios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
+      <End Role="Rol" EntitySet="Rols" />
+      <End Role="Usuario" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

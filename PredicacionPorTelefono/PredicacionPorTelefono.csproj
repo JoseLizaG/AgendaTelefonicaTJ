@@ -147,6 +147,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\app.css" />
     <Content Include="Content\img\joseliza128.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Models\ModelPredicacionPorTelefono.Context.tt">
@@ -190,6 +191,12 @@
     <Content Include="Views\Casas\Index.cshtml" />
     <None Include="Properties\PublishProfiles\ftp.pubxml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
+    <Content Include="Views\Rols\Create.cshtml" />
+    <Content Include="Views\Rols\Delete.cshtml" />
+    <Content Include="Views\Rols\Details.cshtml" />
+    <Content Include="Views\Rols\Edit.cshtml" />
+    <Content Include="Views\Rols\Index.cshtml" />
+    <Content Include="Views\Casas\Notas.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -201,6 +208,7 @@
     <Compile Include="Controllers\BlancoController.cs" />
     <Compile Include="Controllers\CasasController.cs" />
     <Compile Include="Controllers\CongregacionController.cs" />
+    <Compile Include="Controllers\RolsController.cs" />
     <Compile Include="Controllers\TerritoriosController.cs" />
     <Compile Include="Models\Casa.cs">
       <DependentUpon>ModelPredicacionPorTelefono.tt</DependentUpon>
@@ -223,7 +231,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelPredicacionPorTelefono.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Rol.cs">
+      <DependentUpon>ModelPredicacionPorTelefono.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Territorio.cs">
+      <DependentUpon>ModelPredicacionPorTelefono.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuario.cs">
       <DependentUpon>ModelPredicacionPorTelefono.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,6 +10,9 @@
         <EntityTypeShape EntityType="DB_9EB27B_TJModel.Territorio" Width="1.5" PointX="2.875" PointY="0.5" />
         <AssociationConnector Association="DB_9EB27B_TJModel.FK_Casa_Territorio" />
         <AssociationConnector Association="DB_9EB27B_TJModel.FK_Territorio_Congragacion" />
+        <EntityTypeShape EntityType="DB_9EB27B_TJModel.Rol" Width="1.5" PointX="7.375" PointY="1" />
+        <EntityTypeShape EntityType="DB_9EB27B_TJModel.Usuario" Width="1.5" PointX="9.625" PointY="0.625" />
+        <AssociationConnector Association="DB_9EB27B_TJModel.FK_Usuario_Rol" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

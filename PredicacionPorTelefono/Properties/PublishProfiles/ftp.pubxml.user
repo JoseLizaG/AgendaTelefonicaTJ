@@ -20,10 +20,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/17/2018 20:53:25</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>06/18/2018 02:17:49</publishTime>
+      <publishTime>06/21/2018 16:41:23</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>06/18/2018 02:17:49</publishTime>
+      <publishTime>06/21/2018 16:41:23</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/03/2015 17:43:42</publishTime>
@@ -62,7 +62,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/18/2017 13:57:10</publishTime>
     </File>
     <File Include="bin/PredicacionPorTelefono.dll">
-      <publishTime>06/18/2018 02:04:47</publishTime>
+      <publishTime>06/21/2018 16:39:37</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>07/19/2017 14:40:20</publishTime>
@@ -719,13 +719,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/17/2018 20:53:07</publishTime>
     </File>
     <File Include="Models/ModelPredicacionPorTelefono.edmx.diagram">
-      <publishTime>06/17/2018 21:19:27</publishTime>
+      <publishTime>06/18/2018 15:31:21</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>06/17/2018 21:13:19</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>06/18/2018 02:17:44</publishTime>
+      <publishTime>06/21/2018 16:41:18</publishTime>
     </File>
     <File Include="scripts/ai.0.22.9-build00167.js">
       <publishTime>06/17/2018 20:53:26</publishTime>
@@ -740,16 +740,19 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/17/2018 23:54:09</publishTime>
     </File>
     <File Include="Views/Casas/Delete.cshtml">
-      <publishTime>06/17/2018 22:55:24</publishTime>
+      <publishTime>06/21/2018 15:59:08</publishTime>
     </File>
     <File Include="Views/Casas/Details.cshtml">
       <publishTime>06/17/2018 22:55:25</publishTime>
     </File>
     <File Include="Views/Casas/Edit.cshtml">
-      <publishTime>06/17/2018 22:55:25</publishTime>
+      <publishTime>06/21/2018 16:04:55</publishTime>
     </File>
     <File Include="Views/Casas/Index.cshtml">
-      <publishTime>06/18/2018 02:16:11</publishTime>
+      <publishTime>06/21/2018 16:02:35</publishTime>
+    </File>
+    <File Include="Views/Casas/Notas.cshtml">
+      <publishTime>06/21/2018 16:39:01</publishTime>
     </File>
     <File Include="Views/Congregacion/Create.cshtml">
       <publishTime>06/17/2018 23:59:21</publishTime>
@@ -761,13 +764,28 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/17/2018 21:21:23</publishTime>
     </File>
     <File Include="Views/Congregacion/Edit.cshtml">
-      <publishTime>06/17/2018 21:21:23</publishTime>
+      <publishTime>06/18/2018 15:31:21</publishTime>
     </File>
     <File Include="Views/Congregacion/Index.cshtml">
       <publishTime>06/17/2018 23:43:30</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>06/17/2018 23:15:57</publishTime>
+    </File>
+    <File Include="Views/Rols/Create.cshtml">
+      <publishTime>06/18/2018 21:39:43</publishTime>
+    </File>
+    <File Include="Views/Rols/Delete.cshtml">
+      <publishTime>06/18/2018 21:39:44</publishTime>
+    </File>
+    <File Include="Views/Rols/Details.cshtml">
+      <publishTime>06/18/2018 21:39:45</publishTime>
+    </File>
+    <File Include="Views/Rols/Edit.cshtml">
+      <publishTime>06/18/2018 21:39:45</publishTime>
+    </File>
+    <File Include="Views/Rols/Index.cshtml">
+      <publishTime>06/18/2018 21:45:48</publishTime>
     </File>
     <File Include="Views/Shared/_ControlSidebar.cshtml">
       <publishTime>06/17/2018 20:53:07</publishTime>
@@ -791,7 +809,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/17/2018 22:54:16</publishTime>
     </File>
     <File Include="Views/Territorios/Edit.cshtml">
-      <publishTime>06/17/2018 22:54:16</publishTime>
+      <publishTime>06/18/2018 15:32:38</publishTime>
     </File>
     <File Include="Views/Territorios/Index.cshtml">
       <publishTime>06/18/2018 01:15:17</publishTime>

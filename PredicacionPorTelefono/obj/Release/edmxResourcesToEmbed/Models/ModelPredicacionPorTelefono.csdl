@@ -12,6 +12,12 @@
       <End Role="Congragacion" EntitySet="Congragacions" />
       <End Role="Territorio" EntitySet="Territorios" />
     </AssociationSet>
+    <EntitySet Name="Rols" EntityType="DB_9EB27B_TJModel.Rol" />
+    <EntitySet Name="Usuarios" EntityType="DB_9EB27B_TJModel.Usuario" />
+    <AssociationSet Name="FK_Usuario_Rol" Association="DB_9EB27B_TJModel.FK_Usuario_Rol">
+      <End Role="Rol" EntitySet="Rols" />
+      <End Role="Usuario" EntitySet="Usuarios" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Casa">
     <Key>
@@ -50,7 +56,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CongregacionId" Type="Int32" />
     <Property Name="Territorio1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Mapa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mapa" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="CoordenadaX" Type="Decimal" Precision="18" Scale="10" />
     <Property Name="CoordenadaY" Type="Decimal" Precision="18" Scale="10" />
     <NavigationProperty Name="Casas" Relationship="DB_9EB27B_TJModel.FK_Casa_Territorio" FromRole="Territorio" ToRole="Casa" />
@@ -77,6 +83,40 @@
       </Principal>
       <Dependent Role="Territorio">
         <PropertyRef Name="CongregacionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Usuarios" Relationship="DB_9EB27B_TJModel.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="RolId" Type="Int32" />
+    <NavigationProperty Name="Rol" Relationship="DB_9EB27B_TJModel.FK_Usuario_Rol" FromRole="Usuario" ToRole="Rol" />
+  </EntityType>
+  <Association Name="FK_Usuario_Rol">
+    <End Type="DB_9EB27B_TJModel.Rol" Role="Rol" Multiplicity="0..1" />
+    <End Type="DB_9EB27B_TJModel.Usuario" Role="Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="RolId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

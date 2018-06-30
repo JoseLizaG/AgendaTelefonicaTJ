@@ -28,5 +28,7 @@ namespace PredicacionPorTelefono.Models
         public virtual DbSet<Casa> Casas { get; set; }
         public virtual DbSet<Congragacion> Congragacions { get; set; }
         public virtual DbSet<Territorio> Territorios { get; set; }
+        public virtual DbSet<Rol> Rols { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
     }
 }

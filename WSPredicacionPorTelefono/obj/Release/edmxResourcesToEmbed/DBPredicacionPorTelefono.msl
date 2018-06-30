@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_9EB27B_TJModelStoreContainer" CdmEntityContainer="DB_9EB27B_TJEntities">
+    <EntitySetMapping Name="Casas">
+      <EntityTypeMapping TypeName="DB_9EB27B_TJModel.Casa">
+        <MappingFragment StoreEntitySet="Casa">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TerritorioId" ColumnName="TerritorioId" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="DepInt" ColumnName="DepInt" />
+          <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+          <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+          <ScalarProperty Name="Telefono3" ColumnName="Telefono3" />
+          <ScalarProperty Name="Abonado" ColumnName="Abonado" />
+          <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Congragacions">
+      <EntityTypeMapping TypeName="DB_9EB27B_TJModel.Congragacion">
+        <MappingFragment StoreEntitySet="Congragacion">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Circuito" ColumnName="Circuito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rols">
+      <EntityTypeMapping TypeName="DB_9EB27B_TJModel.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Territorios">
+      <EntityTypeMapping TypeName="DB_9EB27B_TJModel.Territorio">
+        <MappingFragment StoreEntitySet="Territorio">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CongregacionId" ColumnName="CongregacionId" />
+          <ScalarProperty Name="Territorio1" ColumnName="Territorio" />
+          <ScalarProperty Name="Mapa" ColumnName="Mapa" />
+          <ScalarProperty Name="CoordenadaX" ColumnName="CoordenadaX" />
+          <ScalarProperty Name="CoordenadaY" ColumnName="CoordenadaY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="DB_9EB27B_TJModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

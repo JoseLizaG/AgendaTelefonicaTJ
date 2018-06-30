@@ -1,0 +1,18 @@
+﻿body {
+}
+
+.comment-text-area {
+  float: left;
+  width:100%;
+  height: auto;
+  background-color: red;
+}
+
+.textinput {
+  float:left;
+  width: 100%;
+  min-height: 35px;
+  outline: none;
+  resize: none;
+  border: 1px solid #f0f0f0;
+}

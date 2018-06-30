@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PredicacionPorTelefono", "PredicacionPorTelefono\PredicacionPorTelefono.csproj", "{8D69FE63-CBCC-4E8F-8E69-F2BB5B87D092}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSPredicacionPorTelefono", "WSPredicacionPorTelefono\WSPredicacionPorTelefono.csproj", "{77D4A9D3-F94E-4EF0-A1C2-8019B6152A3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8D69FE63-CBCC-4E8F-8E69-F2BB5B87D092}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D69FE63-CBCC-4E8F-8E69-F2BB5B87D092}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D69FE63-CBCC-4E8F-8E69-F2BB5B87D092}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D4A9D3-F94E-4EF0-A1C2-8019B6152A3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D4A9D3-F94E-4EF0-A1C2-8019B6152A3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D4A9D3-F94E-4EF0-A1C2-8019B6152A3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D4A9D3-F94E-4EF0-A1C2-8019B6152A3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
